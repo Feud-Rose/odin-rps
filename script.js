@@ -20,4 +20,18 @@ function getComputerChoice() {
 let comRoll = getComputerChoice()
 console.log(comRoll)
 
-//Assign rock paper or scissors based on number selected
+
+
+//Way for player too select Rock Paper or Scissors
+//Convert to all CAPS
+let choice = prompt("Please type Rock, Paper or Scissors!", "Type Here");
+console.log(choice)
+let playerSelection = choice.toUpperCase();
+console.log(playerSelection)
+
+//Compare Player and Comp Selections
+
+
+
+
+//Announce Results
