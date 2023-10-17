@@ -18,34 +18,42 @@ function getComputerChoice() {
     }
 }
 
-
-
-
-
-//Way for player too select Rock Paper or Scissors
-//Convert to all CAPS
-
-
 //Keep track of a bo5
 let rounds = 0;
-function game() {
-    //Score
-    let playerPoints = 0;
-    let computerPoints = 0;
+//Score
+let playerPoints = 0;
+let computerPoints = 0;
+let buttons = document.querySelector('.pick');
+const score = document.querySelector('p');
+let div = document.querySelector('div');
+
+buttons.addEventListener('click', function(e) {
+    let playerSelection = e.target.innerText
+    console.log(playerSelection)
+    let computerSelection = getComputerChoice()
+    console.log(computerSelection)
+    console.log(rounds)
+    if (rounds === 5) {
+        if (playerPoints > computerPoints) {
+            div.textContent = ('You Win! ' + playerPoints + ' to ' + computerPoints + '.');
+            } 
+        else if (playerPoints < computerPoints) {
+            div.textContent = ('You Lose! ' + computerPoints+ ' to ' + playerPoints + '.');
+            } 
+        else {
+            div.textContent =  'It was a Draw, you won the same amount of rounds.';
+            }           
     
-
-    for(let i = 0; i < 5; i++) {
-        let computerSelection = getComputerChoice()
-        console.log(computerSelection)
-        let choice = prompt("Please type Rock, Paper or Scissors!", "Type Here");
-        console.log(choice)
-        let playerSelection = choice.charAt(0).toUpperCase() + choice.slice(1).toLowerCase();
-        console.log(playerSelection)
-        ++rounds
-        console.log(rounds)
-        //Compare Player and Comp Selections
-
+        }    
+        else {
+            
+            let divResults = (playGame(playerSelection, computerSelection,));
+            console.log(divResults)
+            div.textContent = divResults;
+            score.textContent = "Player: " + playerPoints + ", Computer: " + computerPoints + ", Rounds Played: " + rounds + "."
+        //Compare Player and Comp Selection
         function playGame(playerSelection, computerSelection,) {
+            ++rounds
             if (playerSelection === "Rock") {
                 if (computerSelection === "Rock") {
                 return "Draw you both picked " + computerSelection + ".";
@@ -88,25 +96,26 @@ function game() {
             else {
                 return playerSelection + " is not a valid choice.";
             }
-            
 
-
+ 
+   
+        } 
         }
-        console.log(playGame(playerSelection, computerSelection,));
-    }
-    if (rounds === 5) {
-        if (playerPoints > computerPoints) {
-            return ('You Win! ' + playerPoints + ' to ' + computerPoints + '.');
-        } else if (playerPoints < computerPoints) {
-            return ('You Lose! ' + computerPoints+ ' to ' + playerPoints + '.');
-        } else {
-            return 'It was a Draw, you won the same amount of rounds.';
-        }   
-    } 
-    }
+        
+       
+        
+        
+ 
+    
+        
+   
 
-let results = game()
-console.log(results)
+
+    
+});
+ // for(let i = 0; i < 5; i++) { }
+//let results = game()
+//console.log(results)
 //console.log(game(playerSelection, computerSelection));
 //computerSelection
 //Announce Results
